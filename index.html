@@ -1,9 +1,52 @@
-index.html
--FIT< calorie deficit, enough protein, resistance training and good sleep.'],
-about:['عن التطبيق 👤','HOCINE NUTRI-FIT تطبيق رياضي وغذائي مجاني للرجال والنساء.','About 👤','HOCINE NUTRI-FIT is a free fitness and nutrition app for men and women.']
-};
-let d=data[section];
-document.getElementById('content').innerHTML='<h2>'+(english?d[2]:d[0])+'</h2><p>'+(english?d[3]:d[1])+'</p>';
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HOCINE NUTRI-FIT</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial}
+body{background:#0f1115;color:#fff;padding:20px}
+header{text-align:center;padding:30px 10px}
+header h1{font-size:32px;color:#22c55e}
+header p{color:#aaa;margin-top:10px}
+.card{background:#1a1e26;border-radius:16px;padding:20px;margin:15px 0}
+.card h2{color:#22c55e;margin-bottom:10px}
+button{width:100%;padding:15px;border:0;border-radius:12px;background:#22c55e;color:#000;font-size:18px;font-weight:bold;margin-top:10px}
+input{width:100%;padding:12px;border-radius:10px;border:0;margin:8px 0;font-size:16px}
+.result{background:#22c55e;color:#000;padding:15px;border-radius:12px;margin-top:10px;font-weight:bold;text-align:center}
+</style>
+</head>
+<body>
+<header>
+<h1>HOCINE NUTRI-FIT</h1>
+<p>عجز سعرات + بروتين كافي = نتيجة مضمونة</p>
+</header>
+<div class="card">
+<h2>عن التطبيق</h2>
+<p>تطبيقك لتتبع السعرات، البروتين، والوزن بطريقة بسيطة.</p>
+</div>
+<div class="card">
+<h2>حاسبة السعرات</h2>
+<input id="w" type="number" placeholder="وزنك بالكيلو">
+<input id="h" type="number" placeholder="طولك بالسم">
+<input id="a" type="number" placeholder="عمرك">
+<button onclick="calc()">احسب</button>
+<div id="r"></div>
+</div>
+<div class="card">
+<h2>نصيحة اليوم</h2>
+<p>اشرب 3 لتر ماء، نام 7 ساعات، و كول بروتين في كل وجبة.</p>
+</div>
+<script>
+function calc(){
+let w=+document.getElementById('w').value;
+let h=+document.getElementById('h').value;
+let a=+document.getElementById('a').value;
+let bmr=10*w+6.25*h-5*a+5;
+let cal=Math.round(bmr*1.4-500);
+let prot=Math.round(w*2);
+document.getElementById('r').innerHTML='<div class="result">سعراتك للتنشيف: '+cal+'<br>بروتينك: '+prot+'g</div>';
 }
 </script>
 </body>
